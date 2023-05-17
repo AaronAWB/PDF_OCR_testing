@@ -1,4 +1,11 @@
+import platform
 from PyPDF2 import PdfReader
+from tempfile import TemporaryDirectory
+from pathlib import Path
+
+import pytesseract
+from pdf2image import convert_from_path
+from PIL import Image
 
 file = open('pleasant_bay.pdf','rb')
 reader = PdfReader(file)
@@ -21,4 +28,8 @@ def extract_text_from_pdf(pdf_path):
             results.append(text)
     return ' '.join(results) # Convert list to a single string
 
-print(extract_text_from_pdf('pleasant_bay.pdf')) 
+print(extract_text_from_pdf('nielsen.pdf')) 
+print(get_metadata('nielsen.pdf'))
+
+if __name__ == "__main__":
+    main()
