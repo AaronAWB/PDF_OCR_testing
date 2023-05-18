@@ -28,8 +28,12 @@ def extract_text_from_pdf(pdf_path):
             results.append(text)
     return ' '.join(results) # Convert list to a single string
 
-print(extract_text_from_pdf('nielsen.pdf')) 
-print(get_metadata('nielsen.pdf'))
+def image_to_text(image_file):
+    image = Image.open(image_file)
+    text = pytesseract.image_to_string(image)
+    return text
+
+print(image_to_text('pleasant_bay.pdf'))
 
 if __name__ == "__main__":
     main()
